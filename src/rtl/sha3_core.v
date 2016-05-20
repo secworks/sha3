@@ -1,13 +1,13 @@
 //======================================================================
 //
-// sha512_core.v
+// sha3core.v
 // -------------
-// Verilog 2001 implementation of the SHA-512 hash function.
+// Verilog 2001 implementation of the SHA3 hash function.
 // This is the internal core with wide interfaces.
 //
 //
 // Author: Joachim Strombergson
-// Copyright (c) 2014 Secworks Sweden AB
+// Copyright (c) 2016 Secworks Sweden AB
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or
@@ -37,7 +37,7 @@
 //
 //======================================================================
 
-module sha512_core(
+module sha3_core(
                    input wire            clk,
                    input wire            reset_n,
 
@@ -162,36 +162,6 @@ module sha512_core(
   //----------------------------------------------------------------
   // Module instantiantions.
   //----------------------------------------------------------------
-  sha512_k_constants k_constants_inst(
-                                      .addr(t_ctr_reg),
-                                      .K(k_data)
-                                     );
-
-
-  sha512_h_constants h_constants_inst(
-                                      .mode(mode),
-
-                                      .H0(H0_0),
-                                      .H1(H0_1),
-                                      .H2(H0_2),
-                                      .H3(H0_3),
-                                      .H4(H0_4),
-                                      .H5(H0_5),
-                                      .H6(H0_6),
-                                      .H7(H0_7)
-                                     );
-
-
-  sha512_w_mem w_mem_inst(
-                          .clk(clk),
-                          .reset_n(reset_n),
-
-                          .block(block),
-
-                          .init(w_init),
-                          .next(w_next),
-                          .w(w_data)
-                         );
 
 
   //----------------------------------------------------------------
