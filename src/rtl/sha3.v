@@ -90,13 +90,9 @@ module sha3(
   //----------------------------------------------------------------
   reg init_reg;
   reg init_new;
-  reg init_we;
-  reg init_set;
 
   reg next_reg;
   reg next_new;
-  reg next_we;
-  reg next_set;
 
   reg [1 : 0] mode_reg;
   reg [1 : 0] mode_new;
@@ -187,7 +183,7 @@ module sha3(
           next_reg         <= 0;
           mode_reg         <= MODE_SHA3_256;
           ready_reg        <= 0;
-          digest_reg       <= {16{32'h0}};
+          digest_reg       <= 512'h0;
           digest_valid_reg <= 0;
           for (i = 0 ; i < 32 ; i = i + 1)
             block_reg[i] = 32'h0;
@@ -196,12 +192,8 @@ module sha3(
         begin
           ready_reg        <= core_ready;
           digest_valid_reg <= core_digest_valid;
-
-          if (init_we)
-            init_reg <= init_new;
-
-          if (next_we)
-            next_reg <= next_new;
+          init_reg         <= init_new;
+          next_reg         <= next_new;
 
           if (mode_we)
             mode_reg <= write_data[3 : 2];
@@ -223,8 +215,8 @@ module sha3(
   //----------------------------------------------------------------
   always @*
     begin : api_logic
-      init_set      = 0;
-      next_set      = 0;
+      init_new      = 0;
+      next_new      = 0;
       mode_we       = 0;
       block_we      = 0;
       tmp_read_data = 32'h0;
@@ -243,8 +235,8 @@ module sha3(
                 // Write operations.
                 ADDR_CTRL:
                   begin
-                    init_set = write_data[CTRL_INIT_BIT];
-                    next_set = write_data[CTRL_NEXT_BIT];
+                    init_new = write_data[CTRL_INIT_BIT];
+                    next_new = write_data[CTRL_NEXT_BIT];
                     mode_we  = 1;
                   end
 
@@ -278,7 +270,7 @@ module sha3(
                   tmp_read_data = {28'h0, mode_reg, next_reg, init_reg};
 
                 ADDR_STATUS:
-                    tmp_read_data = {28'h0, 2'b0, digest_valid_reg, ready_reg};
+                    tmp_read_data = {30'h0, digest_valid_reg, ready_reg};
 
                 default:
                   begin
