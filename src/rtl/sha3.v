@@ -149,21 +149,21 @@ module sha3(
   //----------------------------------------------------------------
   // core instantiation.
   //----------------------------------------------------------------
-//  sha3_core core(
-//                 .clk(clk),
-//                 .reset_n(reset_n),
-//
-//                 .init(core_init),
-//                 .next(core_next),
-//                 .mode(core_mode),
-//
-//                 .block(core_block),
-//
-//                 .ready(core_ready),
-//
-//                 .digest(core_digest),
-//                 .digest_valid(core_digest_valid)
-//                );
+  sha3_core core(
+                 .clk(clk),
+                 .reset_n(reset_n),
+
+                 .init(core_init),
+                 .next(core_next),
+                 .mode(core_mode),
+
+                 .block(core_block),
+
+                 .ready(core_ready),
+
+                 .digest(core_digest),
+                 .digest_valid(core_digest_valid)
+                );
 
 
   //----------------------------------------------------------------
