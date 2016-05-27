@@ -1,4 +1,4 @@
-# sha3
+# SHA3 #
 
 [FIPS 202 compliant](http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf)
 SHA-3 core written in Verilog. The core is written in fairly
