@@ -19,7 +19,7 @@ wrapper can be removed.
 
 ## Status ##
 
-*** (2016-01-05)***
+***(2016-01-05)***
 
 Initial implementation started. Not much to see and even
 less to use at the moment.
