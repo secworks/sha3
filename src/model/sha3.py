@@ -83,6 +83,23 @@ def compare_digests(digest, expected):
 
 
 #-------------------------------------------------------------------
+# single_block_tests()
+#
+#
+#-------------------------------------------------------------------
+def single_block_tests()
+    # TC1: NIST testcase with message "abc"
+    print("TC1: Single block message test specified by NIST.")
+    TC1_block = [0x61626380, 0x00000000, 0x00000000, 0x00000000,
+                 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+                 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+                 0x00000000, 0x00000000, 0x00000000, 0x00000018]
+
+    TC1_expected = [0x3a985da74fe225b2, 0x045c172d6bd390bd,
+                    0x855f086e3e9d525b 0x46bfe24511431532]
+
+
+#-------------------------------------------------------------------
 # main()
 #
 # If executed tests the SHA3 model using known test vectors.
