@@ -7,6 +7,10 @@ written i Python that is used to drive the HW implementation.
 
 The core implements SHA3-224, SHA3-256, SHA3-384 and SHA3-512.
 
+Test vectors used are taken from:
+- [NIST CAVP TESTING: SECURE HASHING](http://csrc.nist.gov/groups/STM/cavp/secure-hashing.html)
+- [NIST SHA-3 REFERENCE AND OPTIMIZED IMPLEMENTATIONS](http://csrc.nist.gov/groups/ST/hash/sha-3/Submission_Reqs/test_vectors.html)
+
 
 ## Implementation ##
 
