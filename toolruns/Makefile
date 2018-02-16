@@ -36,15 +36,45 @@
 #
 #===================================================================
 
-CC=iverilog
+CORE_SRC=../src/rtl/sha3_core.v
+CORE_TB_SRC=../src/tb/tb_sha3_core.v
 
-LINT=verilator
+TOP_SRC=../src/rtl/sha3.v $(CORE_SRC)
+TOP_TB_SRC=../src/tb/tb_sha3.v
+
+
+CC = iverilog
+CC_FLAGS = -Wall
+
+LINT = verilator
+LINT_FLAGS = +1364-2001ext+ --lint-only -Wall -Wno-fatal -Wno-DECLFILENAME
+
+
+all: top.sim core.sim
+
+
+top.sim: $(TOP_TB_SRC) $(TOP_SRC)
+	$(CC) $(CC_FLAGS) -o top.sim $(TOP_TB_SRC) $(TOP_SRC)
+
+
+core.sim: $(CORE_TB_SRC) $(CORE_SRC)
+	$(CC) $(CC_FLAGS) -o core.sim $(CORE_SRC) $(CORE_TB_SRC)
+
+
+sim-top: top.sim
+	./top.sim
+
+
+sim-core: core.sim
+	./core.sim
+
+
+lint: $(TOP_SRC)
+	$(LINT) $(LINT_FLAGS) $(TOP_SRC)
 
 
 clean:
-	rm -f top.sim
-	rm -f core.sim
-	rm -f wmem.sim
+	rm -f *.sim
 
 
 help:
