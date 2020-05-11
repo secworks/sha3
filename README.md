@@ -1,5 +1,9 @@
 # SHA3 #
+## Status
 
+Not completed. Does not work. **Do. Not. Use.**
+
+## Introduction
 [FIPS 202 compliant](http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf)
 SHA-3 core written in Verilog. The core is written in fairly
 conservative Verilog 2001 style. There is a functional model
